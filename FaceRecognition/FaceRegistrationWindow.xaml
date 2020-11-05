@@ -1,0 +1,44 @@
+﻿<Window x:Class="FaceRecognition.FaceRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="FaceRegistrationWindow"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <StackPanel Orientation="Vertical">
+        <ScrollViewer VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Auto">
+            <ListBox Margin="2"
+                     MaxWidth="600"
+                     ItemsSource="{Binding Path=Faces}"
+                     SelectedIndex="0"
+                     SelectedItem="{Binding Path=SelectedFace}">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Image Width="150"
+                               Height="150"
+                               Margin="2"
+                               Source="{Binding Path=ActualImage}" />
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+
+        <TextBox Margin="2"
+                 FontSize="14"
+                 Text="{Binding Path=FaceName}" />
+
+        <Button Margin="2"
+                Content="  Сохранить  "
+                Click="SaveFace" />
+    </StackPanel>
+</Window>
